@@ -53,7 +53,6 @@ button {padding:12px;width:100%;background:#3b82f6;color:white;border:none;borde
 <button onclick="restartQuiz()">Restart 🔄</button>
 </div>
 
-<!-- نفس Popup بتاع index -->
 <div class="popup" id="popup">
   <div class="popup-content">
     <h2 id="finalScore"></h2>
@@ -107,7 +106,6 @@ true,false,true,false,true,true,false,true,true,false,
 true,false,true,true,false,true,true,false,true,false
 ];
 
-// build
 window.onload = ()=>{
 let form=document.getElementById("quiz");
 
@@ -126,7 +124,6 @@ form.appendChild(div);
 });
 };
 
-// submit (زي index بالظبط)
 function submitQuiz(){
 let score=0;
 
@@ -150,7 +147,6 @@ function restartQuiz(){
 location.reload();
 }
 
-// music (نفسه)
 let music=document.getElementById("bgMusic");
 let volume=document.getElementById("volume");
 
