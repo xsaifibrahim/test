@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CCNA Quiz - By : xsaif</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* 🎥 Video Background */
+video.bg {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-1;
+}
+
+/* Overlay */
+.overlay {
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:-1;
+}
+
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.question {
+  background:rgba(0,0,0,0.5);
+  padding:15px;
+  margin-bottom:12px;
+  border-radius:10px;
+}
+
+.correct {background:#16a34a !important;}
+.wrong {background:#dc2626 !important;}
+
+button {
+  padding:12px;
+  width:100%;
+  background:#3b82f6;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:18px;
+  margin-top:10px;
+}
+
+/* 🔊 Music UI */
+.music-container {
+  position:fixed;
+  top:15px;
+  right:15px;
+  display:flex;
+  align-items:center;
+}
+
+.music-btn {
+  background:#111;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+#volume {
+  width:0;
+  opacity:0;
+  margin-left:10px;
+  transition:0.3s;
+}
+
+.music-container:hover #volume {
+  width:100px;
+  opacity:1;
+}
+
+/* 🎯 Popup */
+.popup {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.popup-content {
+  background:#1e293b;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎥 BACKGROUND VIDEO -->
+<video class="bg" autoplay muted loop>
+  <source src="https://c.top4top.io/m_3745v8l4o1.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<!-- 🔊 MUSIC -->
+<div class="music-container">
+  <div class="music-btn">🔊</div>
+  <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+</div>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://d.top4top.io/m_374541f2m1.mp3">
+</audio>
+
+<div class="container">
+<h1>CCNA Security MCQ</h1>
+<form id="quiz"></form>
+
+<button onclick="submitQuiz()">Submit</button>
+<button onclick="restartQuiz()">Restart 🔄</button>
+</div>
+
+<!--POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="finalScore"></h2>
+    <button onclick="restartQuiz()">Retry 🔄</button>
+  </div>
+</div>
+
+<script>
+
+//QUESTIONS
+const questions = [
+["Which of the following ensures data confidentiality in a network?","Routing","Encryption","Switching","NAT"],
+["Which element of the CIA Triad ensures that data is not modified?","Confidentiality","Integrity","Availability","Authentication"],
+["Which attack attempts to intercept communication between two parties?","Phishing","MITM","DDoS","Trojan"],
+["Which device filters traffic based on predefined rules?","Switch","Router","Firewall","IDS"],
+["Which protocol is considered insecure due to lack of encryption?","HTTPS","SSH","Telnet","IPsec"],
+["What does IPS stand for?","Internet Protection System","Intrusion Prevention System","Internal Packet Service","Inspection Processing System"],
+["Which IPS detection method uses known attack patterns?","Anomaly-based","Behavioral","Signature-based","Policy-based"],
+["Which IPS mode can block traffic in real-time?","Passive","Promiscuous","Inline","Monitoring"],
+["Which concept reduces the attack surface of a device?","Encryption","Hardening","Monitoring","Routing"],
+["Which technology translates private IP addresses to public IP addresses?","ACL","VPN","NAT","IPS"],
+
+["Which firewall type tracks connection states?","Packet filtering","Stateless","Stateful","Proxy"],
+["What is the purpose of a DMZ?","Increase bandwidth","Store logs","Isolate public services","Encrypt traffic"],
+["Which attack floods a network with excessive traffic?","MITM","Phishing","DDoS","SQL Injection"],
+["Which ASA interface has the highest security level by default?","Outside","DMZ","Inside","Management"],
+["Which detection method identifies unknown attacks?","Signature-based","Policy-based","Anomaly-based","ACL-based"],
+["Which command enables SSH on Cisco devices?","enable ssh","ip ssh version 2","ssh enable","crypto ssh enable"],
+["Which tool monitors logs centrally?","NAT","SIEM","ACL","Routing"],
+["Which attack uses malicious SQL queries?","XSS","Phishing","SQL Injection","DDoS"],
+["Which security concept ensures systems are accessible?","Confidentiality","Integrity","Availability","Authentication"],
+["Which IPS deployment mode only monitors traffic?","Inline","Active","Promiscuous","Blocking"],
+
+["Which Cisco platform provides next-generation IPS?","Hub","Switch","Firepower","Modem"],
+["Which technique ensures data authenticity?","Hashing","Encryption","Digital Signature","NAT"],
+["Which attack targets human behavior?","Malware","Social Engineering","DDoS","MITM"],
+["Which component logs security events?","Router","Firewall","Syslog","NAT"],
+["Which concept limits user permissions?","Encryption","Least Privilege","Routing","NAT"],
+["Which protocol is used for secure remote access?","FTP","Telnet","SSH","HTTP"],
+["Which attack modifies data in transit?","DDoS","MITM","Phishing","Trojan"],
+["Which command applies ACL on interface?","access-list apply","ip access-group","apply acl","set acl"],
+["Which IPS action terminates connection?","Allow","Drop","Reset","Ignore"],
+["Which layer does IPS inspect deeply?","Physical","Network","Transport","Application"],
+
+["Which attack spreads automatically across networks?","Worm","Trojan","Spyware","Phishing"],
+["Which device connects different networks?","Switch","Router","Firewall","IDS"],
+["Which method verifies data integrity?","Encryption","Hashing","Routing","NAT"],
+["Which tool captures packets?","NAT","Wireshark","ACL","Router"],
+["Which attack steals login credentials via fake websites?","MITM","Phishing","DDoS","Worm"],
+["Which Cisco feature integrates firewall and IPS?","ACL","NAT","ASA FirePOWER","VLAN"],
+["Which command shows running config?","show config","show running-config","display config","show current"],
+["Which attack hides inside normal traffic?","SQL Injection","Phishing","MITM","Worm"],
+["Which concept ensures only authorized users access data?","Availability","Confidentiality","Integrity","Routing"],
+["Which system analyzes logs and events centrally?","IPS","Firewall","SIEM","Router"]
+];
+
+const answers = ["Encryption","Integrity","MITM","Firewall","Telnet","Intrusion Prevention System","Signature-based","Inline","Hardening","NAT",
+"Stateful","Isolate public services","DDoS","Inside","Anomaly-based","ip ssh version 2","SIEM","SQL Injection","Availability","Promiscuous",
+"Firepower","Digital Signature","Social Engineering","Syslog","Least Privilege","SSH","MITM","ip access-group","Reset","Application",
+"Worm","Router","Hashing","Wireshark","Phishing","ASA FirePOWER","show running-config","SQL Injection","Confidentiality","SIEM"];
+
+// build questions
+window.onload = ()=>{
+let form=document.getElementById("quiz");
+questions.forEach((q,i)=>{
+let div=document.createElement("div");
+div.className="question";
+div.id="q"+(i+1);
+
+let html=`<p>${i+1}. ${q[0]}</p>`;
+["A","B","C","D"].forEach((l,j)=>{
+html+=`<label><input type="radio" name="q${i+1}" value="${q[j+1]}"> ${l}) ${q[j+1]}</label><br>`;
+});
+
+div.innerHTML=html;
+form.appendChild(div);
+});
+};
+
+// submit
+function submitQuiz(){
+let score=0;
+
+for(let i=1;i<=40;i++){
+let selected=document.querySelector(`input[name="q${i}"]:checked`);
+let div=document.getElementById("q"+i);
+
+if(selected && selected.value===answers[i-1]){
+score++;
+div.classList.add("correct");
+}else{
+div.classList.add("wrong");
+}
+}
+
+document.getElementById("popup").style.display="flex";
+document.getElementById("finalScore").innerHTML="🔥 Score: "+score+"/40";
+}
+
+// restart
+function restartQuiz(){
+location.reload();
+}
+
+// 🔊 MUSIC
+let music=document.getElementById("bgMusic");
+let volume=document.getElementById("volume");
+
+music.volume=0.5;
+
+// auto play after first click
+document.addEventListener("click",()=>{
+music.play().catch(()=>{});
+},{once:true});
+
+// toggle
+document.querySelector(".music-btn").onclick=()=>{
+if(music.paused){music.play();}else{music.pause();}
+};
+
+// volume
+volume.oninput=()=>{music.volume=volume.value};
+
+</script>
+
+</body>
+</html>
