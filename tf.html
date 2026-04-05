@@ -3,51 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Disturbed Systems Quiz - By : xsaif</title>
+<title>True / False Quiz</title>
 
 <style>
-body {
-  margin:0;
-  font-family: Arial;
-  color:white;
-  overflow-x:hidden;
-  font-size:16px;
-}
+body {margin:0;font-family:Arial;color:white;overflow-x:hidden;}
 
-/* 🎥 Video Background */
-video.bg {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-1;
-}
+video.bg {position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;}
+.overlay {position:fixed;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:-1;}
 
-/* Overlay */
-.overlay {
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.6);
-  z-index:-1;
-}
+.container {max-width:900px;width:95%;margin:auto;padding:20px;}
 
-.container {
-  max-width:900px;
-  width:95%;
-  margin:auto;
-  padding:20px;
-}
-
-.question {
-  background:rgba(0,0,0,0.5);
-  padding:12px;
-  margin-bottom:12px;
-  border-radius:10px;
-  font-size:15px;
-}
+.question {background:rgba(0,0,0,0.5);padding:12px;margin-bottom:12px;border-radius:10px;}
 
 .correct {background:#16a34a !important;}
 .wrong {background:#dc2626 !important;}
@@ -55,96 +21,60 @@ video.bg {
 button {
   padding:14px;
   width:100%;
-  background:#3b82f6;
+  background:linear-gradient(135deg,#3b82f6,#9333ea);
   color:white;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
   font-size:16px;
   margin-top:10px;
-}
-
-/* 🔊 Music UI */
-.music-container {
-  position:fixed;
-  top:15px;
-  right:15px;
-  display:flex;
-  align-items:center;
-}
-
-.music-btn {
-  background:#111;
-  padding:10px;
-  border-radius:50%;
   cursor:pointer;
 }
+button:hover {transform:scale(1.03);}
 
-#volume {
-  width:0;
-  opacity:0;
-  margin-left:10px;
-  transition:0.3s;
-}
+.music-container {position:fixed;top:15px;right:15px;display:flex;align-items:center;}
+.music-btn {background:#111;padding:10px;border-radius:50%;cursor:pointer;}
 
-.music-container:hover #volume {
-  width:100px;
-  opacity:1;
-}
+#volume {width:0;opacity:0;margin-left:10px;transition:0.3s;}
+.music-container:hover #volume {width:100px;opacity:1;}
 
-/* 🎯 Popup */
 .popup {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,0.8);
-  display:none;
-  justify-content:center;
-  align-items:center;
+  display:none;justify-content:center;align-items:center;
 }
 
 .popup-content {
+  position:relative;
   background:#1e293b;
   padding:30px;
   border-radius:15px;
   text-align:center;
 }
 
-/* 🔥 Mobile Optimization */
-@media (max-width: 600px) {
-  h1 {
-    font-size:20px;
-    text-align:center;
-  }
+.close-btn {
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:20px;
+}
 
-  .question {
-    font-size:14px;
-  }
-
-  button {
-    font-size:14px;
-    padding:12px;
-  }
-
-  .music-container {
-    top:10px;
-    right:10px;
-  }
+@media(max-width:600px){
+h1{text-align:center;font-size:20px;}
 }
 </style>
 </head>
 
 <body>
 
-<video class="bg" autoplay muted loop>
+<video class="bg" autoplay muted loop playsinline>
   <source src="https://c.top4top.io/m_3745v8l4o1.mp4">
 </video>
 <div class="overlay"></div>
 
 <div class="music-container">
   <div class="music-btn">🔊</div>
-  <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+  <input type="range" id="volume" min="0" max="1" step="0.01" value="0.2">
 </div>
 
 <audio id="bgMusic" loop preload="auto">
@@ -152,7 +82,7 @@ button {
 </audio>
 
 <div class="container">
-<h1>True / False Quiz</h1>
+<h1>🔥 True / False Quiz</h1>
 
 <a href="index.html">
 <button type="button">⬅ Back to MCQ</button>
@@ -166,6 +96,7 @@ button {
 
 <div class="popup" id="popup">
   <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">❌</span>
     <h2 id="finalScore"></h2>
     <button onclick="restartQuiz()">Retry 🔄</button>
   </div>
@@ -184,7 +115,6 @@ const questions = [
 "Symmetric Multiprocessor is a one OS can use all the CPUs (allowing several tasks to be performed simultaneously).",
 "Asymmetric Multiprocessor, processors play different roles (mostly master-slave).",
 "In distributed memory multiprocessor, each processor has its own memory.",
-
 "In Uniform Memory Access system, Access to all memory at the same speed for all processors.",
 "NOS does not provide true distribution transparency, but does provide convenience.",
 "Can provide better services with shared servers.",
@@ -192,21 +122,8 @@ const questions = [
 ];
 
 const answers = [
-true,
-true,
-true,
-true,
-true,
-false,
-true,
-true,
-true,
-true,
-
-true,
-true,
-true,
-true
+true,true,true,true,true,false,true,true,true,true,
+true,true,true,true
 ];
 
 window.onload = ()=>{
@@ -228,57 +145,49 @@ form.appendChild(div);
 };
 
 function submitQuiz(){
-let score = 0;
+let score=0;
 
-for(let i = 1; i <= questions.length; i++){
-  let selected = document.querySelector(`input[name="q${i}"]:checked`);
-  let div = document.getElementById("q" + i);
+questions.forEach((_,i)=>{
+let selected=document.querySelector(`input[name="q${i}"]:checked`);
+let div=document.getElementById("q"+i);
+let correct=answers[i];
 
-  if(selected && selected.value === answers[i-1]){
-    score++;
-    div.classList.remove("wrong");
-    div.classList.add("correct");
-  } else {
-    div.classList.remove("correct");
-    div.classList.add("wrong");
-  }
+let labels=div.querySelectorAll("label");
+
+labels.forEach(label=>{
+let val = label.querySelector("input").value === "true";
+if(val === correct){
+label.innerHTML += " ✅";
+label.style.color="#22c55e";
 }
+});
 
-// show popup
-document.getElementById("popup").style.display = "flex";
-
-// dynamic score
-document.getElementById("finalScore").innerHTML =
-"🔥 Score: " + score + " / " + questions.length;
-}
-
-// restart
-function restartQuiz(){
-location.reload();
+if(selected && (selected.value==="true")===correct){
+score++;
+div.classList.add("correct");
+}else{
+div.classList.add("wrong");
 }
 });
 
 document.getElementById("popup").style.display="flex";
-document.getElementById("finalScore").innerHTML="🔥 Score: "+score+"/30";
+document.getElementById("finalScore").innerHTML=
+`🔥 Score: ${score} / ${questions.length}`;
 }
 
 function restartQuiz(){
 location.reload();
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
 }
 
 let music=document.getElementById("bgMusic");
 let volume=document.getElementById("volume");
 
-music.volume=0.5;
-
-document.addEventListener("click",()=>{
-music.play().catch(()=>{});
-},{once:true});
-
-document.querySelector(".music-btn").onclick=()=>{
-if(music.paused){music.play();}else{music.pause();}
-};
-
+document.addEventListener("click",()=>{music.play().catch(()=>{});},{once:true});
+document.querySelector(".music-btn").onclick=()=>{music.paused?music.play():music.pause()};
 volume.oninput=()=>{music.volume=volume.value};
 
 </script>
