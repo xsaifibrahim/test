@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CCNA Quiz - By : xsaif</title>
+<title>Disturbed Systems Quiz - By : xsaif</title>
 
 <style>
 body {
@@ -148,55 +148,20 @@ button {
 
 //QUESTIONS
 const questions = [
-["Which of the following ensures data confidentiality in a network?","Routing","Encryption","Switching","NAT"],
-["Which element of the CIA Triad ensures that data is not modified?","Confidentiality","Integrity","Availability","Authentication"],
-["Which attack attempts to intercept communication between two parties?","Phishing","MITM","DDoS","Trojan"],
-["Which device filters traffic based on predefined rules?","Switch","Router","Firewall","IDS"],
-["Which protocol is considered insecure due to lack of encryption?","HTTPS","SSH","Telnet","IPsec"],
-["What does IPS stand for?","Internet Protection System","Intrusion Prevention System","Internal Packet Service","Inspection Processing System"],
-["Which IPS detection method uses known attack patterns?","Anomaly-based","Behavioral","Signature-based","Policy-based"],
-["Which IPS mode can block traffic in real-time?","Passive","Promiscuous","Inline","Monitoring"],
-["Which concept reduces the attack surface of a device?","Encryption","Hardening","Monitoring","Routing"],
-["Which technology translates private IP addresses to public IP addresses?","ACL","VPN","NAT","IPS"],
-
-["Which firewall type tracks connection states?","Packet filtering","Stateless","Stateful","Proxy"],
-["What is the purpose of a DMZ?","Increase bandwidth","Store logs","Isolate public services","Encrypt traffic"],
-["Which attack floods a network with excessive traffic?","MITM","Phishing","DDoS","SQL Injection"],
-["Which ASA interface has the highest security level by default?","Outside","DMZ","Inside","Management"],
-["Which detection method identifies unknown attacks?","Signature-based","Policy-based","Anomaly-based","ACL-based"],
-["Which command enables SSH on Cisco devices?","enable ssh","ip ssh version 2","ssh enable","crypto ssh enable"],
-["Which tool monitors logs centrally?","NAT","SIEM","ACL","Routing"],
-["Which attack uses malicious SQL queries?","XSS","Phishing","SQL Injection","DDoS"],
-["Which security concept ensures systems are accessible?","Confidentiality","Integrity","Availability","Authentication"],
-["Which IPS deployment mode only monitors traffic?","Inline","Active","Promiscuous","Blocking"],
-
-["Which Cisco platform provides next-generation IPS?","Hub","Switch","Firepower","Modem"],
-["Which technique ensures data authenticity?","Hashing","Encryption","Digital Signature","NAT"],
-["Which attack targets human behavior?","Malware","Social Engineering","DDoS","MITM"],
-["Which component logs security events?","Router","Firewall","Syslog","NAT"],
-["Which concept limits user permissions?","Encryption","Least Privilege","Routing","NAT"],
-["Which protocol is used for secure remote access?","FTP","Telnet","SSH","HTTP"],
-["Which attack modifies data in transit?","DDoS","MITM","Phishing","Trojan"],
-["Which command applies ACL on interface?","access-list apply","ip access-group","apply acl","set acl"],
-["Which IPS action terminates connection?","Allow","Drop","Reset","Ignore"],
-["Which layer does IPS inspect deeply?","Physical","Network","Transport","Application"],
-
-["Which attack spreads automatically across networks?","Worm","Trojan","Spyware","Phishing"],
-["Which device connects different networks?","Switch","Router","Firewall","IDS"],
-["Which method verifies data integrity?","Encryption","Hashing","Routing","NAT"],
-["Which tool captures packets?","NAT","Wireshark","ACL","Router"],
-["Which attack steals login credentials via fake websites?","MITM","Phishing","DDoS","Worm"],
-["Which Cisco feature integrates firewall and IPS?","ACL","NAT","ASA FirePOWER","VLAN"],
-["Which command shows running config?","show config","show running-config","display config","show current"],
-["Which attack hides inside normal traffic?","SQL Injection","Phishing","MITM","Worm"],
-["Which concept ensures only authorized users access data?","Availability","Confidentiality","Integrity","Routing"],
-["Which system analyzes logs and events centrally?","IPS","Firewall","SIEM","Router"]
+["What is the basis for communication in a Network Operating System?","Shared memory","Messages","Files","Remote procedure calls"],
+["In the comparison of systems, which type has the highest degree of transparency?","Network OS","Middleware-based OS","Distributed OS","Hybrid OS"],
+["Which type of computing system consists of homogeneous computing nodes connected by high-speed LAN?","Grid computing","Cloud computing","Cluster computing","Pervasive computing"],
+["In multi-computer systems, how does data travel between processors?","Through internal bus only","Via LAN cable","Through shared memory","Through wireless connections"],
+["What characterizes the omega switching network in multiprocessors?","Single stage design","Multiple stages required","Direct connections only","No switching capability"]
 ];
 
-const answers = ["Encryption","Integrity","MITM","Firewall","Telnet","Intrusion Prevention System","Signature-based","Inline","Hardening","NAT",
-"Stateful","Isolate public services","DDoS","Inside","Anomaly-based","ip ssh version 2","SIEM","SQL Injection","Availability","Promiscuous",
-"Firepower","Digital Signature","Social Engineering","Syslog","Least Privilege","SSH","MITM","ip access-group","Reset","Application",
-"Worm","Router","Hashing","Wireshark","Phishing","ASA FirePOWER","show running-config","SQL Injection","Confidentiality","SIEM"];
+const answers = [
+"Messages",
+"Distributed OS",
+"Cluster computing",
+"Via LAN cable",
+"Multiple stages required"
+];
 
 // build questions
 window.onload = ()=>{
