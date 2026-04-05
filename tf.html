@@ -228,17 +228,33 @@ form.appendChild(div);
 };
 
 function submitQuiz(){
-let score=0;
+let score = 0;
 
-questions.forEach((_,i)=>{
-let selected=document.querySelector(`input[name="q${i}"]:checked`);
-let div=document.getElementById("q"+i);
+for(let i = 1; i <= questions.length; i++){
+  let selected = document.querySelector(`input[name="q${i}"]:checked`);
+  let div = document.getElementById("q" + i);
 
-if(selected && (selected.value==="true")===answers[i]){
-score++;
-div.classList.add("correct");
-}else{
-div.classList.add("wrong");
+  if(selected && selected.value === answers[i-1]){
+    score++;
+    div.classList.remove("wrong");
+    div.classList.add("correct");
+  } else {
+    div.classList.remove("correct");
+    div.classList.add("wrong");
+  }
+}
+
+// show popup
+document.getElementById("popup").style.display = "flex";
+
+// dynamic score
+document.getElementById("finalScore").innerHTML =
+"🔥 Score: " + score + " / " + questions.length;
+}
+
+// restart
+function restartQuiz(){
+location.reload();
 }
 });
 
