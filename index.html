@@ -152,7 +152,26 @@ const questions = [
 ["In the comparison of systems, which type has the highest degree of transparency?","Network OS","Middleware-based OS","Distributed OS","Hybrid OS"],
 ["Which type of computing system consists of homogeneous computing nodes connected by high-speed LAN?","Grid computing","Cloud computing","Cluster computing","Pervasive computing"],
 ["In multi-computer systems, how does data travel between processors?","Through internal bus only","Via LAN cable","Through shared memory","Through wireless connections"],
-["What characterizes the omega switching network in multiprocessors?","Single stage design","Multiple stages required","Direct connections only","No switching capability"]
+["What characterizes the omega switching network in multiprocessors?","Single stage design","Multiple stages required","Direct connections only","No switching capability"],
+
+// NEW QUESTIONS
+["Which of the following is a cloud system mentioned in the document?","Amazon EC2","Local Server","Private Cloud","Virtual Machine"],
+["What is the maximum speed limit for single processor performance mentioned in the document?","3GHz","4GHz","5GHz","6GHz"],
+["Cloud systems mentioned in the document include Amazon EC2 and Google AWS.","True","False","",""],
+["What is the primary role of the communication subsystem in a distributed system?","Manage hardware resources","Facilitate communication between hosts","Execute application logic","Perform data encryption"],
+["Which of the following is NOT a communication requirement of a distributed system?","Performance (latency, bandwidth)","Scalability","Mobility","Single-threaded execution"],
+["A node in a network refers to:","Only routers","Any device that can send/receive data","Only servers","End-user applications"],
+
+["Which network type covers the smallest geographical area?","WAN","PAN","MAN","GAN"],
+["Which wireless network type is used for city-wide coverage?","WPAN","WLAN","WMAN","WWAN"],
+["What does SAN stand for in networking?","System Area Network","Storage Area Network","Secure Access Network","Server Allocation Network"],
+["Which component connects different networks of the same type?","Router","Bridge","Hub","Modem"],
+["Tunnelling is used to:","Encrypt all network traffic","Enable communication using encapsulation","Increase bandwidth","Replace routers"],
+
+["In symmetric multiprocessing (SMP), the OS can:","Assign fixed roles to CPUs","Use all CPUs dynamically","Only run user-mode tasks","Work without shared memory"],
+["A shared memory multiprocessor allows:","Each CPU to have private memory","Uniform memory access (UMA)","Non-uniform latency (NUMA)","Decentralized resource management"],
+["NUMA systems have:","Same memory speed","Faster access to local memory","No memory sharing","Single memory controller"],
+["Distributed shared memory (DSM) may suffer from:","False sharing of pages","Unlimited scalability","No replication issues","Centralized page management"]
 ];
 
 const answers = [
@@ -160,7 +179,26 @@ const answers = [
 "Distributed OS",
 "Cluster computing",
 "Via LAN cable",
-"Multiple stages required"
+"Multiple stages required",
+
+// NEW ANSWERS
+"Amazon EC2",
+"5GHz",
+"True",
+"Facilitate communication between hosts",
+"Single-threaded execution",
+"Any device that can send/receive data",
+
+"PAN",
+"WMAN",
+"Storage Area Network",
+"Bridge",
+"Enable communication using encapsulation",
+
+"Use all CPUs dynamically",
+"Uniform memory access (UMA)",
+"Faster access to local memory",
+"False sharing of pages"
 ];
 
 // build questions
