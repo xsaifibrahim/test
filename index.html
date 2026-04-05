@@ -247,22 +247,33 @@ form.appendChild(div);
 
 // submit
 function submitQuiz(){
-let score=0;
+let score = 0;
 
-for(let i=1;i<=40;i++){
-let selected=document.querySelector(`input[name="q${i}"]:checked`);
-let div=document.getElementById("q"+i);
+for(let i = 1; i <= questions.length; i++){
+  let selected = document.querySelector(`input[name="q${i}"]:checked`);
+  let div = document.getElementById("q" + i);
 
-if(selected && selected.value===answers[i-1]){
-score++;
-div.classList.add("correct");
-}else{
-div.classList.add("wrong");
+  if(selected && selected.value === answers[i-1]){
+    score++;
+    div.classList.remove("wrong");
+    div.classList.add("correct");
+  } else {
+    div.classList.remove("correct");
+    div.classList.add("wrong");
+  }
 }
+
+// show popup
+document.getElementById("popup").style.display = "flex";
+
+// dynamic score
+document.getElementById("finalScore").innerHTML =
+"🔥 Score: " + score + " / " + questions.length;
 }
 
-document.getElementById("popup").style.display="flex";
-document.getElementById("finalScore").innerHTML="🔥 Score: "+score+"/40";
+// restart
+function restartQuiz(){
+location.reload();
 }
 
 // restart
