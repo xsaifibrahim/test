@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Disturbed Systems Quiz</title>
-
+<title>Network Programming Quiz</title>
+<div class="footer">
+  Powered by xsaif
+</div>
 
 <style>
 body {margin:0;font-family:Arial;color:white;overflow-x:hidden;}
@@ -18,6 +20,39 @@ video.bg {position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-
 
 .correct {background:#16a34a !important;}
 .wrong {background:#dc2626 !important;}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0ff;
+
+    text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 40px #00f;
+
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 5px #0ff,
+            0 0 10px #0ff,
+            0 0 20px #0ff;
+    }
+    to {
+        text-shadow:
+            0 0 10px #0ff,
+            0 0 20px #0ff,
+            0 0 40px #00f;
+    }
+}
 
 button {
   padding:14px;
