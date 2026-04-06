@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Network Programming Quiz</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
-<div class="footer">
-  Powered by xsaif
-</div>
+<title>Project X</title>
+
 
 <style>
 body {margin:0;font-family:Arial;color:white;overflow-x:hidden;}
@@ -21,39 +18,6 @@ video.bg {position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-
 
 .correct {background:#16a34a !important;}
 .wrong {background:#dc2626 !important;}
-
-.footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #0ff;
-
-    text-shadow:
-        0 0 5px #0ff,
-        0 0 10px #0ff,
-        0 0 20px #0ff,
-        0 0 40px #00f;
-
-    animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow:
-            0 0 5px #0ff,
-            0 0 10px #0ff,
-            0 0 20px #0ff;
-    }
-    to {
-        text-shadow:
-            0 0 10px #0ff,
-            0 0 20px #0ff,
-            0 0 40px #00f;
-    }
-}
 
 button {
   padding:14px;
@@ -79,6 +43,8 @@ button:hover {transform:scale(1.03);}
   background:rgba(0,0,0,0.8);
   display:none;justify-content:center;align-items:center;
 }
+.footer {text-align:center;padding:10px;font-size:16px;color:#0ff;text-shadow:0 0 5px #0ff,0 0 10px #0ff;}
+
 
 .popup-content {
   position:relative;
@@ -94,6 +60,10 @@ button:hover {transform:scale(1.03);}
   right:15px;
   cursor:pointer;
   font-size:20px;
+}
+h1 {
+  text-align: center;
+  margin-top: 10px;
 }
 
 @media(max-width:600px){
@@ -115,7 +85,7 @@ h1{text-align:center;font-size:20px;}
 </div>
 
 <audio id="bgMusic" loop preload="auto">
-  <source src="https://d.top4top.io/m_374541f2m1.mp3">
+  <source src="https://j.top4top.io/m_3748lc2rv1.mp3">
 </audio>
 
 <div class="container">
@@ -124,7 +94,7 @@ h1{text-align:center;font-size:20px;}
 
 <button onclick="submitQuiz()">Submit</button>
 <button onclick="restartQuiz()">Restart 🔄</button>
-<a href="tf.html"><button>Go to True/False</button></a>
+<div class="footer">⚡ Powered by xsaif</div>
 
 </div>
 
@@ -140,59 +110,61 @@ h1{text-align:center;font-size:20px;}
 <script>
 
 const questions = [
-  "What does DNS stand for?",
-  "Which of the following is NOT an application-layer protocol?",
-  "HTTP operates over which transport layer protocol by default?",
-  "What does SMTP stand for?",
-  "Web caching improves:",
-  "Which protocol is used to transfer files over the web?",
-  "A socket is:",
-  "What is the default port number for HTTP?",
-  "Which of the following is a transport-layer protocol?",
-  "Which transport protocol provides unreliable data transfer?",
-  "Which transport-layer service ensures data is received in order?",
-  "What is the main advantage of UDP over TCP?",
-  "Which of the following is a reliable transport-layer protocol?",
-  "Which transport-layer protocol provides connection-oriented service?",
-  "Which of the following uses a stop-and-wait protocol?",
-  "Which of the following services uses UDP instead of TCP?",
-  "Which device operates at the Data Link layer of the OSI model?",
-  "Which protocol is used to transfer web pages from a server to a client?",
-  "Which of the following is an application-layer protocol?",
-  "Which transport-layer protocol is primarily used by HTTP?",
-  "Which application layer protocol is responsible for sending emails?",
-  "Which type of HTTP connection remains open for multiple requests and responses?",
-  "Which port number does HTTP use by default?",
-  "What is the default port number for SMTP?",
-  "Which of the following is NOT an application-layer protocol?"
+["Which of the following services uses UDP instead of TCP?","HTTP","FTP","DNS","Email"],
+["Which device operates at the Data Link layer of the OSI model?","Router","Switch","Hub","Firewall"],
+["Which protocol is used to transfer web pages from a server to a client?","FTP","SMTP","HTTP","SSH"],
+["Which of the following is an application-layer protocol?","TCP","IP","HTTP","Ethernet"],
+["Which transport-layer protocol is primarily used by HTTP?","TCP","UDP","ICMP","IP"],
+["Which application layer protocol is responsible for sending emails?","IMAP","POP3","SMTP","HTTP"],
+["Which type of HTTP connection remains open for multiple requests and responses?","Non-persistent HTTP","Persistent HTTP","UDP-based HTTP","Stateless HTTP"],
+["Which port number does HTTP use by default?","21","53","80","443"],
+["What is the default port number for SMTP?","25","80","110","443"],
+["Which of the following is NOT an application-layer protocol?","FTP","TCP","HTTP","DNS"],
+
+["What does DNS stand for?","Data Name System","Domain Name System","Digital Network Service","Domain Network System"],
+["Which of the following is NOT an application-layer protocol?","HTTP","FTP","SMTP","IP"],
+["HTTP operates over which transport layer protocol by default?","UDP","TCP","ICMP","IP"],
+["What does SMTP stand for?","Secure Mail Transfer Protocol","Simple Mail Transfer Protocol","Standard Mail Transmission Procedure","Safe Mail Transport Protocol"],
+["Web caching improves:","Security","Availability","Latency","Throughput only"],
+["Which protocol is used to transfer files over the web?","HTTP","FTP","SMTP","DNS"],
+["A socket is:","An IP address","A TCP segment","An interface between the app and transport layer","A type of encryption"],
+["What is the default port number for HTTP?","25","80","110","53"],
+["Which of the following is a transport-layer protocol?","IP","TCP","DNS","HTTP"],
+["Which transport protocol provides unreliable data transfer?","TCP","UDP","FTP","SMTP"],
+["Which transport-layer service ensures data is received in order?","UDP","TCP","IP","DNS"],
+["What is the main advantage of UDP over TCP?","Error correction","High reliability","Low overhead and latency","Encryption"],
+["Which of the following is a reliable transport-layer protocol?","TCP","UDP","ICMP","DNS"],
+["Which transport-layer protocol provides connection-oriented service?","UDP","TCP","IP","DNS"],
+["Which of the following uses a stop-and-wait protocol?","TCP","HTTP","RDT 1.0","Go-Back-N"]
 ];
 
 const answers = [
-  ["Data Name System", "Domain Name System", "Digital Network Service", "Domain Network System"],
-  ["HTTP", "FTP", "SMTP", "IP"],
-  ["UDP", "TCP", "ICMP", "IP"],
-  ["Secure Mail Transfer Protocol", "Simple Mail Transfer Protocol", "Standard Mail Transmission Procedure", "Safe Mail Transport Protocol"],
-  ["Security", "Availability", "Latency", "Throughput only"],
-  ["HTTP", "FTP", "SMTP", "DNS"],
-  ["An IP address", "A TCP segment", "An interface between the app and transport layer", "A type of encryption"],
-  ["25", "80", "110", "53"],
-  ["IP", "TCP", "DNS", "HTTP"],
-  ["TCP", "UDP", "FTP", "SMTP"],
-  ["UDP", "TCP", "IP", "DNS"],
-  ["Error correction", "High reliability", "Low overhead and latency", "Encryption"],
-  ["TCP", "UDP", "ICMP", "DNS"],
-  ["UDP", "TCP", "IP", "DNS"],
-  ["TCP", "HTTP", "RDT 1.0", "Go-Back-N"],
-  ["HTTP", "FTP", "DNS", "Email"],
-  ["Router", "Switch", "Hub", "Firewall"],
-  ["FTP", "SMTP", "HTTP", "SSH"],
-  ["TCP", "IP", "HTTP", "Ethernet"],
-  ["TCP", "UDP", "ICMP", "IP"],
-  ["IMAP", "POP3", "SMTP", "HTTP"],
-  ["Non-persistent HTTP", "Persistent HTTP", "UDP-based HTTP", "Stateless HTTP"],
-  ["21", "53", "80", "443"],
-  ["25", "80", "110", "443"],
-  ["FTP", "TCP", "HTTP", "DNS"]
+"DNS",
+"Switch",
+"HTTP",
+"HTTP",
+"TCP",
+"SMTP",
+"Persistent HTTP",
+"80",
+"25",
+"TCP",
+
+"Domain Name System",
+"IP",
+"TCP",
+"Simple Mail Transfer Protocol",
+"Latency",
+"FTP",
+"An interface between the app and transport layer",
+"80",
+"TCP",
+"UDP",
+"TCP",
+"Low overhead and latency",
+"TCP",
+"TCP",
+"RDT 1.0"
 ];
 
 // build questions
@@ -255,9 +227,10 @@ function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 
-let music=document.getElementById("bgMusic");
-let volume=document.getElementById("volume");
+let music = document.getElementById("bgMusic");
+let volume = document.getElementById("volume");
 
+music.volume = volume.value; 
 document.addEventListener("click",()=>{music.play().catch(()=>{});},{once:true});
 document.querySelector(".music-btn").onclick=()=>{music.paused?music.play():music.pause()};
 volume.oninput=()=>{music.volume=volume.value};
