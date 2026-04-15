@@ -45,7 +45,6 @@ button:hover {transform:scale(1.03);}
 }
 .footer {text-align:center;padding:10px;font-size:16px;color:#0ff;text-shadow:0 0 5px #0ff,0 0 10px #0ff;}
 
-
 .popup-content {
   position:relative;
   background:#1e293b;
@@ -61,6 +60,7 @@ button:hover {transform:scale(1.03);}
   cursor:pointer;
   font-size:20px;
 }
+
 h1 {
   text-align: center;
   margin-top: 10px;
@@ -68,6 +68,60 @@ h1 {
 
 @media(max-width:600px){
 h1{text-align:center;font-size:20px;}
+}
+
+/* 🔥🔥 NEW RADIO STYLE 🔥🔥 */
+
+/* نخلي الاختيارات شكلها clickable */
+label {
+  display:block;
+  background: rgba(255,255,255,0.05);
+  padding:10px;
+  border-radius:10px;
+  margin:6px 0;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+/* hover */
+label:hover {
+  background: rgba(0,255,255,0.1);
+}
+
+/* نخفي الراديو القديم */
+input[type="radio"] {
+  display:none;
+}
+
+/* شكل الدائرة */
+label span::before {
+  content:"";
+  display:inline-block;
+  width:16px;
+  height:16px;
+  border:2px solid #aaa;
+  border-radius:50%;
+  margin-right:10px;
+  vertical-align:middle;
+  transition:0.3s;
+}
+
+/* لما يتحدد */
+input[type="radio"]:checked + span {
+  color:#0ff;
+  font-weight:bold;
+}
+
+/* glow */
+input[type="radio"]:checked + span::before {
+  background:#0ff;
+  border-color:#0ff;
+  box-shadow:0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+/* يخلي البوكس كله يلمع */
+input[type="radio"]:checked + span {
+  text-shadow:0 0 5px #0ff;
 }
 </style>
 </head>
@@ -211,8 +265,14 @@ div.className="question";
 div.id="q"+(i+1);
 
 let html=`<p>${i+1}. ${q[0]}</p>`;
+
 ["A","B","C","D"].forEach((l,j)=>{
-html+=`<label><input type="radio" name="q${i+1}" value="${q[j+1]}"> ${l}) ${q[j+1]}</label><br>`;
+html+=`
+<label>
+  <input type="radio" name="q${i+1}" value="${q[j+1]}">
+  <span>${l}) ${q[j+1]}</span>
+</label>
+`;
 });
 
 div.innerHTML=html;
