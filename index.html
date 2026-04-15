@@ -230,11 +230,13 @@ let correct=answers[i-1];
 
 let labels=div.querySelectorAll("label");
 
-labels.forEach(label=>{
-if(label.textContent.includes(correct)){
-label.innerHTML += " ✅";
-label.style.color="#22c55e";
-}
+labels.forEach(label => {
+  let input = label.querySelector("input");
+
+  if(input.value === correct){
+    label.innerHTML += " ✅";
+    label.style.color = "#22c55e";
+  }
 });
 
 if(selected && selected.value===correct){
