@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>True / False Quiz</title>
+<title>Project X</title>
+
 
 <style>
 body {margin:0;font-family:Arial;color:white;overflow-x:hidden;}
@@ -42,6 +43,8 @@ button:hover {transform:scale(1.03);}
   background:rgba(0,0,0,0.8);
   display:none;justify-content:center;align-items:center;
 }
+.footer {text-align:center;padding:10px;font-size:16px;color:#0ff;text-shadow:0 0 5px #0ff,0 0 10px #0ff;}
+
 
 .popup-content {
   position:relative;
@@ -57,6 +60,10 @@ button:hover {transform:scale(1.03);}
   right:15px;
   cursor:pointer;
   font-size:20px;
+}
+h1 {
+  text-align: center;
+  margin-top: 10px;
 }
 
 @media(max-width:600px){
@@ -78,22 +85,26 @@ h1{text-align:center;font-size:20px;}
 </div>
 
 <audio id="bgMusic" loop preload="auto">
-  <source src="https://d.top4top.io/m_374541f2m1.mp3">
+  <source src="">
 </audio>
+<!-- https://j.top4top.io/m_3748lc2rv1.mp3 -->
+
 
 <div class="container">
-<h1>🔥 True / False Quiz</h1>
-
-<a href="index.html">
-<button type="button">⬅ Back to MCQ</button>
-</a>
-
+<h1>CCNA R&W III</h1>
+<h2>MCQs on VLAN</h2>
 <form id="quiz"></form>
 
 <button onclick="submitQuiz()">Submit</button>
 <button onclick="restartQuiz()">Restart 🔄</button>
+<a href="tf.html">
+<button type="button">⬅ MCQs on Packet Switching & Circuit Switching</button>
+</a>
+<div class="footer">⚡ Powered by xsaif</div>
+
 </div>
 
+<!-- popup -->
 <div class="popup" id="popup">
   <div class="popup-content">
     <span class="close-btn" onclick="closePopup()">❌</span>
@@ -105,91 +116,158 @@ h1{text-align:center;font-size:20px;}
 <script>
 
 const questions = [
-"Multi Computer: Cluster, Data need to travel outside PC via LAN cable.",
-"Multi-processor: Tightly coupled, Data no need to travel outside PC, outside board.",
-"Heterogeneous Multicomputer Systems, the nodes that form the system may vary widely.",
-"Heterogeneous Multicomputer Systems, the interconnection network may be heterogeneous.",
-"Heterogeneous Multicomputer Systems, large scale multicomputer using existing networks and backbones.",
-"Uniprocessor operating system, implement a virtual machine.",
-"NOS, loosely-coupled operating system for heterogeneous multi-computers (LAN and WAN).",
-"Symmetric Multiprocessor is a one OS can use all the CPUs (allowing several tasks to be performed simultaneously).",
-"Asymmetric Multiprocessor, processors play different roles (mostly master-slave).",
-"In distributed memory multiprocessor, each processor has its own memory.",
-"In Uniform Memory Access system, Access to all memory at the same speed for all processors.",
-"NOS does not provide true distribution transparency, but does provide convenience.",
-"Can provide better services with shared servers.",
-"Middleware models describe the way of distribution and communication."
+["VLAN stands for:","Virtual Local Area Network","Variable LAN","Virtual Link Access Network","Very Large Area Network"],
+["VLAN operates at which OSI layer?","Physical","Data Link","Network","Transport"],
+["VLAN is used to:","Increase collisions","Segment networks logically","Reduce bandwidth","Connect WAN"],
+["Which device is mainly used to create VLANs?","Hub","Switch","Repeater","Modem"],
+["VLAN reduces:","Broadcast domains","Collision domains","IP addresses","Cables"],
+["Each VLAN is a separate:","Collision domain","Broadcast domain","Network cable","Router"],
+["VLAN membership can be based on:","Port","MAC address","Protocol","All of these"],
+["Default VLAN ID is:","0","1","10","100"],
+["VLAN tagging is defined in:","802.11","802.3","802.1Q","802.5"],
+["VLAN trunking is used to:","Block traffic","Carry multiple VLANs","Increase speed","Reduce ports"],
+["Access port belongs to:","Multiple VLANs","Single VLAN","All VLANs","No VLAN"],
+["Trunk port carries:","One VLAN","Multiple VLANs","No VLAN","Only IP"],
+["VLAN tagging adds:","IP header","MAC address","VLAN ID","Port number"],
+["Inter-VLAN communication requires:","Hub","Switch","Router or Layer 3 switch","Repeater"],
+["VLAN improves:","Security","Performance","Management","All of these"],
+["Which VLAN is used for management?","Data VLAN","Default VLAN","Management VLAN","Native VLAN"],
+["Native VLAN is:","Tagged","Untagged","Deleted","Disabled"],
+["VLAN ID range is:","0–255","1–4094","1–100","0–1024"],
+["Which VLAN carries untagged traffic?","Default VLAN","Native VLAN","Data VLAN","Voice VLAN"],
+["VLAN segmentation is:","Physical","Logical","Manual","Wireless"],
+["VLAN reduces network:","Speed","Traffic","Size","Errors"],
+["Which protocol supports VLAN trunking?","FTP","HTTP","802.1Q","TCP"],
+["VLAN increases:","Broadcast traffic","Security","Collisions","Errors"],
+["Which VLAN is for voice traffic?","Data VLAN","Voice VLAN","Native VLAN","Default VLAN"],
+["VLAN configuration is done on:","Router","Switch","Hub","Repeater"],
+["VLAN helps in:","Reducing broadcast traffic","Increasing collision","Slowing network","Removing IP"],
+["Inter-VLAN routing allows:","Same VLAN communication","Different VLAN communication","No communication","Internet only"],
+["VLAN tag size is:","2 bytes","4 bytes","8 bytes","16 bytes"],
+["Which VLAN cannot be deleted?","VLAN 10","VLAN 100","VLAN 1","VLAN 20"],
+["VLAN improves network:","Complexity","Security","Errors","Cost"],
+["Switch port mode for VLAN is:","Access","Trunk","Both","None"],
+["VLAN assignment can be:","Static","Dynamic","Both","None"],
+["VLAN prevents:","Broadcast storms","Data transfer","IP addressing","Switching"],
+["VLAN allows grouping by:","Location","Function","Department","All of these"],
+["VLAN tagging is added between:","IP & TCP","MAC & IP","Source & Destination MAC","Port & IP"],
+["Which device performs inter-VLAN routing?","Hub","Switch","Router","Repeater"],
+["VLAN configuration increases:","Cost","Flexibility","Errors","Delay"],
+["VLAN is useful in:","Large networks","Small networks","Both","None"],
+["VLAN makes network:","Less secure","More secure","Slower","Complex"],
+["VLAN logically divides:","Router","Switch","Network","Cable"]
 ];
 
 const answers = [
-true,true,true,true,true,false,true,true,true,true,
-true,true,true,true
+"Virtual Local Area Network",
+"Data Link",
+"Segment networks logically",
+"Switch",
+"Broadcast domains",
+"Broadcast domain",
+"All of these",
+"1",
+"802.1Q",
+"Carry multiple VLANs",
+"Single VLAN",
+"Multiple VLANs",
+"VLAN ID",
+"Router or Layer 3 switch",
+"All of these",
+"Management VLAN",
+"Untagged",
+"1–4094",
+"Native VLAN",
+"Logical",
+"Traffic",
+"802.1Q",
+"Security",
+"Voice VLAN",
+"Switch",
+"Reducing broadcast traffic",
+"Different VLAN communication",
+"4 bytes",
+"VLAN 1",
+"Security",
+"Both",
+"Both",
+"Broadcast storms",
+"All of these",
+"Source & Destination MAC",
+"Router",
+"Flexibility",
+"Both",
+"More secure",
+"Network"
 ];
 
-window.onload = ()=>{
+// build questions
+window.onload=()=>{
 let form=document.getElementById("quiz");
 
 questions.forEach((q,i)=>{
 let div=document.createElement("div");
 div.className="question";
-div.id="q"+i;
+div.id="q"+(i+1);
 
-div.innerHTML=`
-<p>${i+1}. ${q}</p>
-<label><input type="radio" name="q${i}" value="true"> True</label><br>
-<label><input type="radio" name="q${i}" value="false"> False</label>
-`;
+let html=`<p>${i+1}. ${q[0]}</p>`;
+["A","B","C","D"].forEach((l,j)=>{
+html+=`<label><input type="radio" name="q${i+1}" value="${q[j+1]}"> ${l}) ${q[j+1]}</label><br>`;
+});
 
+div.innerHTML=html;
 form.appendChild(div);
 });
 };
 
+// submit
 function submitQuiz(){
 let score=0;
 
-questions.forEach((_,i)=>{
+for(let i=1;i<=questions.length;i++){
 let selected=document.querySelector(`input[name="q${i}"]:checked`);
 let div=document.getElementById("q"+i);
-let correct=answers[i];
+let correct=answers[i-1];
 
 let labels=div.querySelectorAll("label");
 
 labels.forEach(label=>{
-let val = label.querySelector("input").value === "true";
-if(val === correct){
+if(label.textContent.includes(correct)){
 label.innerHTML += " ✅";
 label.style.color="#22c55e";
 }
 });
 
-if(selected && (selected.value==="true")===correct){
+if(selected && selected.value===correct){
 score++;
 div.classList.add("correct");
 }else{
 div.classList.add("wrong");
 }
-});
+}
 
 document.getElementById("popup").style.display="flex";
 document.getElementById("finalScore").innerHTML=
 `🔥 Score: ${score} / ${questions.length}`;
 }
 
+// restart
 function restartQuiz(){
 location.reload();
 }
 
+// close popup
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 
-let music=document.getElementById("bgMusic");
-let volume=document.getElementById("volume");
+let music = document.getElementById("bgMusic");
+let volume = document.getElementById("volume");
 
+music.volume = volume.value; 
 document.addEventListener("click",()=>{music.play().catch(()=>{});},{once:true});
 document.querySelector(".music-btn").onclick=()=>{music.paused?music.play():music.pause()};
 volume.oninput=()=>{music.volume=volume.value};
-
 </script>
 
 </body>
