@@ -141,14 +141,14 @@ input[type="radio"]:checked + span {
   <!-- https://j.top4top.io/m_3748lc2rv1.mp3 -->
 
 <div class="container">
-<h1>CCNA R&S III</h1>
-<h2>MCQs Packet Switching & Circuit Switching</h2>
+<h1>s/w engineering</h1>
+<h2>MCQs</h2>
 <form id="quiz"></form>
 
 <button onclick="submitQuiz()">Submit</button>
 <button onclick="restartQuiz()">Restart 🔄</button>
 <a href="tf.html">
-<button type="button">⬅ MCQs on VLAN</button>
+<!--<button type="button">⬅ MCQs on VLAN</button>-->
 </a>
 <div class="footer">⚡ Powered by xsaif</div>
 
@@ -166,89 +166,51 @@ input[type="radio"]:checked + span {
 <script>
 
 const questions = [
-["Packet switching divides data into:","Signals","Packets","Frames","Bits"],
-["Circuit switching establishes:","Temporary connection","Permanent path before transmission","Packet route","Logical address"],
-["Which is used in telephone networks?","Packet switching","Circuit switching","Frame relay","ATM"],
-["Which switching method is used in the Internet?","Circuit switching","Packet switching","Message switching","Line switching"],
-["Packet switching is:","Connection-oriented only","Connectionless or connection-oriented","Physical only","Manual"],
-["Circuit switching requires:","No setup","Setup phase","Packet header","Routing table"],
-["In packet switching, data is sent:","As a whole","In packets","In signals","In circuits"],
-["Circuit switching has:","Dynamic path","Dedicated path","No path","Random path"],
-["Packet switching improves:","Delay","Efficiency","Cost","Errors"],
-["Which has lower latency after setup?","Packet switching","Circuit switching","Both same","None"],
-["Packet switching uses:","Dedicated bandwidth","Shared bandwidth","No bandwidth","Fixed bandwidth"],
-["Circuit switching wastes:","Time","Bandwidth","Energy","Data"],
-["Each packet contains:","Only data","Header and data","Address only","Signal only"],
-["In packet switching, packets may:","Follow same path","Follow different paths","Not move","Stay fixed"],
-["Circuit switching has phases:","1","2","3","4"],
-["Packet switching does NOT require:","Setup","Routing","Header","Address"],
-["Delay in packet switching is:","Constant","Variable","Zero","Fixed"],
-["Circuit switching delay is:","Variable","Constant","Zero","Random"],
-["Packet switching is used in:","Telephone","Internet","Radio","Cable TV"],
-["Circuit switching example:","Email","VoIP","Telephone call","Web browsing"],
-["Packet switching allows:","Resource sharing","Dedicated path","Fixed delay","No routing"],
-["Circuit switching requires:","Routing per packet","No routing","Fixed routing","Dynamic routing"],
-["Packet switching is more:","Expensive","Efficient","Slow","Rigid"],
-["Circuit switching is:","Flexible","Rigid","Dynamic","Adaptive"],
-["Packet switching handles congestion by:","Ignoring","Dropping packets","Fixing circuit","Blocking users"],
-["Packet switching is:","Less reliable","More reliable (with protocols)","No error control","Fixed"],
-["Circuit switching bandwidth is:","Shared","Dedicated","Random","Dynamic"],
-["Packet switching bandwidth is:","Dedicated","Shared","Fixed","Reserved"],
-["Which is faster for continuous data?","Packet switching","Circuit switching","Both","None"],
-["Which is better for burst data?","Packet switching","Circuit switching","Both","None"],
-["Packet switching uses:","Store and forward","Direct transfer","Analog signals","Circuits"],
-["Circuit switching uses:","Store and forward","Dedicated path","Packet routing","Buffers"],
-["Packet switching reduces:","Flexibility","Efficiency","Cost","Speed"],
-["Circuit switching increases:","Efficiency","Delay","Cost","Sharing"],
-["Packet switching supports:","Multiple users","Single user","No user","Fixed user"],
-["Circuit switching supports:","Multiple paths","Single dedicated path","No path","Random path"],
-["Packet switching uses:","Headers","Circuits","Channels","Signals"],
-["Circuit switching requires:","Packet header","Setup phase","Buffer","Routing table"],
-["Packet switching delay depends on:","Traffic","Distance","Cable","Signal"],
-["Circuit switching is best for:","Data bursts","Voice calls","Emails","Web browsing"]
+["Software is defined as ___________","set of programs, documentation & configuration of data","set of programs","documentation and configuration of data","None of the mentioned"],
+["What is Software Engineering?","Designing a software","Testing a software","Application of engineering principles to the design a software","None of the above"],
+["Who is the father of Software Engineering?","Margaret Hamilton","Watts S. Humphrey","Alan Turing","Boris Beizer"],
+["What are the features of Software Code?","Simplicity","Accessibility","Modularity","All of the above"],
+["____________ is a software development activity that is not a part of software processes.","Validation","Specification","Development","Dependence"],
+["Define Agile scrum methodology.","project management that emphasizes incremental progress","project management that emphasizes decremental progress","project management that emphasizes neutral progress","project management that emphasizes no progress"],
+["CASE stands for","Computer-Aided Software Engineering","Control Aided Science and Engineering","Cost Aided System Experiments","None of the mentioned"],
+["________ is defined as the process of generating analysis and designing documents?","Re-engineering","Reverse engineering","Software re-engineering","Science and engineering"],
+["The activity that distributes estimated effort across the planned project duration by allocating the effort to specific software developing tasks is ____________","Project scheduling","Detailed schedule","Macroscopic schedule","None of the mentioned"],
+["What is a Functional Requirement?","specifies the tasks the program must complete","specifies the tasks the program should not complete","specifies the tasks the program must not work","All of the mentioned"],
+
+["Choose the correct option in terms of Issues related to professional responsibility","Confidentiality","Intellectual property rights","Both Confidentiality & Intellectual property rights","Managing Client Relationships"],
+["Software engineers should not use their technical skills to misuse other people’s computers. Here the term misuse refers to:","Unauthorized access to computer material","Unauthorized modification of computer material","Dissemination of viruses or other malware","All of the mentioned"],
+["Explain what is meant by PRODUCT with reference to one of the eight principles as per the ACM/IEEE Code of Ethics ?","The product should be easy to use","Software engineers shall ensure that their products and related modifications meet the highest professional standards possible","Software engineers shall ensure that their products and related modifications satisfy the client","It means that the product designed /created should be easily available"],
+["Identify an ethical dilemma from the situations mentioned below:","Your employer releases a safety-critical system without finishing the testing of the system","Refusing to undertake a project","Agreement in principle with the policies of senior management","All of the mentioned"],
+["Identify the correct statement: Software engineers shall","act in a manner that is in the best interests of his expertise and favour.","act consistently with the public interest.","ensure that their products only meet the SRS.","all of the mentioned"],
+["Select the incorrect statement: Software engineers should","not knowingly accept work that is outside your competence.","not use your technical skills to misuse other people’s computers.","be dependent on their colleagues.","maintain integrity and independence in their professional judgment."],
+["Efficiency in a software product does not include ________","responsiveness","licensing","memory utilization","processing time"],
+["As per an IBM report, what is the reason for these statistics ?","Lack of adequate training in software engineering","Lack of software ethics and understanding","Management issues in the company","All of the mentioned"],
+["The reason for software bugs and failures is due to","Software companies","Software Developers","Both Software companies and Developers","All of the mentioned"],
+["Software deteriorates rather than wears out because","Software suffers from exposure to hostile environment.","Defect are more likely to arise after software has been used often.","Multiple change request introduce errors in component interactions.","Software spare parts become harder to order."]
 ];
 
 const answers = [
-"Packets",
-"Permanent path before transmission",
-"Circuit switching",
-"Packet switching",
-"Connectionless or connection-oriented",
-"Setup phase",
-"In packets",
-"Dedicated path",
-"Efficiency",
-"Circuit switching",
-"Shared bandwidth",
-"Bandwidth",
-"Header and data",
-"Follow different paths",
-"3",
-"Setup",
-"Variable",
-"Constant",
-"Internet",
-"Telephone call",
-"Resource sharing",
-"No routing",
-"Efficient",
-"Rigid",
-"Dropping packets",
-"More reliable (with protocols)",
-"Dedicated",
-"Shared",
-"Circuit switching",
-"Packet switching",
-"Store and forward",
-"Dedicated path",
-"Cost",
-"Cost",
-"Multiple users",
-"Single dedicated path",
-"Headers",
-"Setup phase",
-"Traffic",
-"Voice calls"
+"set of programs, documentation & configuration of data",
+"Application of engineering principles to the design a software",
+"Watts S. Humphrey",
+"All of the above",
+"Dependence",
+"project management that emphasizes incremental progress",
+"Computer-Aided Software Engineering",
+"Reverse engineering",
+"Project scheduling",
+"specifies the tasks the program must complete",
+
+"Both Confidentiality & Intellectual property rights",
+"All of the mentioned",
+"Software engineers shall ensure that their products and related modifications meet the highest professional standards possible",
+"Your employer releases a safety-critical system without finishing the testing of the system",
+"act consistently with the public interest.",
+"be dependent on their colleagues.",
+"licensing",
+"All of the mentioned",
+"Both Software companies and Developers",
+"Multiple change request introduce errors in component interactions."
 ];
 
 // build questions
