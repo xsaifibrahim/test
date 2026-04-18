@@ -145,14 +145,14 @@ input[type="radio"]:checked + span {
 
 
 <div class="container">
-<h1>CCNA R&S III</h1>
-<h2>MCQs on VLAN</h2>
+<h1>s/w engineering</h1>
+<h2>True Or False</h2>
 <form id="quiz"></form>
 
 <button onclick="submitQuiz()">Submit</button>
 <button onclick="restartQuiz()">Restart 🔄</button>
 <a href="index.html">
-<button type="button">⬅ MCQs on Packet Switching & Circuit Switching</button>
+<button type="button">⬅ MCQs on s/w engineering</button>
 </a>
 <div class="footer">⚡ Powered by xsaif</div>
 
@@ -170,89 +170,29 @@ input[type="radio"]:checked + span {
 <script>
 
 const questions = [
-["VLAN stands for:","Virtual Local Area Network","Variable LAN","Virtual Link Access Network","Very Large Area Network"],
-["VLAN operates at which OSI layer?","Physical","Data Link","Network","Transport"],
-["VLAN is used to:","Increase collisions","Segment networks logically","Reduce bandwidth","Connect WAN"],
-["Which device is mainly used to create VLANs?","Hub","Switch","Repeater","Modem"],
-["VLAN reduces:","Broadcast domains","Collision domains","IP addresses","Cables"],
-["Each VLAN is a separate:","Collision domain","Broadcast domain","Network cable","Router"],
-["VLAN membership can be based on:","Port","MAC address","Protocol","All of these"],
-["Default VLAN ID is:","0","1","10","100"],
-["VLAN tagging is defined in:","802.11","802.3","802.1Q","802.5"],
-["VLAN trunking is used to:","Block traffic","Carry multiple VLANs","Increase speed","Reduce ports"],
-["Access port belongs to:","Multiple VLANs","Single VLAN","All VLANs","No VLAN"],
-["Trunk port carries:","One VLAN","Multiple VLANs","No VLAN","Only IP"],
-["VLAN tagging adds:","IP header","MAC address","VLAN ID","Port number"],
-["Inter-VLAN communication requires:","Hub","Switch","Router or Layer 3 switch","Repeater"],
-["VLAN improves:","Security","Performance","Management","All of these"],
-["Which VLAN is used for management?","Data VLAN","Default VLAN","Management VLAN","Native VLAN"],
-["Native VLAN is:","Tagged","Untagged","Deleted","Disabled"],
-["VLAN ID range is:","0–255","1–4094","1–100","0–1024"],
-["Which VLAN carries untagged traffic?","Default VLAN","Native VLAN","Data VLAN","Voice VLAN"],
-["VLAN segmentation is:","Physical","Logical","Manual","Wireless"],
-["VLAN reduces network:","Speed","Traffic","Size","Errors"],
-["Which protocol supports VLAN trunking?","FTP","HTTP","802.1Q","TCP"],
-["VLAN increases:","Broadcast traffic","Security","Collisions","Errors"],
-["Which VLAN is for voice traffic?","Data VLAN","Voice VLAN","Native VLAN","Default VLAN"],
-["VLAN configuration is done on:","Router","Switch","Hub","Repeater"],
-["VLAN helps in:","Reducing broadcast traffic","Increasing collision","Slowing network","Removing IP"],
-["Inter-VLAN routing allows:","Same VLAN communication","Different VLAN communication","No communication","Internet only"],
-["VLAN tag size is:","2 bytes","4 bytes","8 bytes","16 bytes"],
-["Which VLAN cannot be deleted?","VLAN 10","VLAN 100","VLAN 1","VLAN 20"],
-["VLAN improves network:","Complexity","Security","Errors","Cost"],
-["Switch port mode for VLAN is:","Access","Trunk","Both","None"],
-["VLAN assignment can be:","Static","Dynamic","Both","None"],
-["VLAN prevents:","Broadcast storms","Data transfer","IP addressing","Switching"],
-["VLAN allows grouping by:","Location","Function","Department","All of these"],
-["VLAN tagging is added between:","IP & TCP","MAC & IP","Source & Destination MAC","Port & IP"],
-["Which device performs inter-VLAN routing?","Hub","Switch","Router","Repeater"],
-["VLAN configuration increases:","Cost","Flexibility","Errors","Delay"],
-["VLAN is useful in:","Large networks","Small networks","Both","None"],
-["VLAN makes network:","Less secure","More secure","Slower","Complex"],
-["VLAN logically divides:","Router","Switch","Network","Cable"]
+["Software is a product and can be manufactured using the same technologies used for other engineering artifacts.","True","False","-","-"],
+["WebApps are a mixture of print publishing and software development, making their development outside the realm of software engineering practice.","True","False","-","-"],
+["There are no real differences between creating WebApps and MobileApps.","True","False","-","-"],
+["In its simplest form an external computing device may access cloud data services using a web browser.","True","False","-","-"],
+["Product line software development depends the reuse of existing software components to provide software engineering leverage.","True","False","-","-"],
+["Software engineering umbrella activities are only applied during the initial phases of software development projects.","True","False","-","-"],
+["Planning ahead for software reuse reduces the cost and increases the value of the systems into which they are incorporated.","True","False","-","-"],
+["The essence of software engineering practice might be described as understand the problem, plan a solution, carry out the plan, and examine the result for accuracy.","True","False","-","-"],
+["In agile process models the only deliverable work product is the working program.","True","False","-","-"],
+["Most software development projects are initiated to try to meet some business need.","True","False","-","-"]
 ];
 
 const answers = [
-"Virtual Local Area Network",
-"Data Link",
-"Segment networks logically",
-"Switch",
-"Broadcast domains",
-"Broadcast domain",
-"All of these",
-"1",
-"802.1Q",
-"Carry multiple VLANs",
-"Single VLAN",
-"Multiple VLANs",
-"VLAN ID",
-"Router or Layer 3 switch",
-"All of these",
-"Management VLAN",
-"Untagged",
-"1–4094",
-"Native VLAN",
-"Logical",
-"Traffic",
-"802.1Q",
-"Security",
-"Voice VLAN",
-"Switch",
-"Reducing broadcast traffic",
-"Different VLAN communication",
-"4 bytes",
-"VLAN 1",
-"Security",
-"Both",
-"Both",
-"Broadcast storms",
-"All of these",
-"Source & Destination MAC",
-"Router",
-"Flexibility",
-"Both",
-"More secure",
-"Network"
+"False",
+"False",
+"False",
+"True",
+"True",
+"False",
+"True",
+"True",
+"False",
+"True"
 ];
 
 // build questions
