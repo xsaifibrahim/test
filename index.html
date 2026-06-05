@@ -141,8 +141,8 @@ input[type="radio"]:checked + span {
   <!-- https://j.top4top.io/m_3748lc2rv1.mp3 -->
 
 <div class="container">
-<h1>DISTRIBUTED SYSTEMS</h1>
-<h2>MCQs</h2>
+<h1>CCNA R&S</h1>
+<h2>MCQs Packet Switching & Circuit Switching</h2>
 <form id="quiz"></form>
 
 <button onclick="submitQuiz()">Submit</button>
@@ -166,41 +166,91 @@ input[type="radio"]:checked + span {
 <script>
 
 const questions = [
-["What is the basis for communication in a Network Operating System?","Shared memory","Messages","Files","RPC"],
-["Which type has the highest degree of transparency?","Network OS","Middleware-based OS","Distributed OS","Hybrid OS"],
-["Which system consists of homogeneous nodes connected by high-speed LAN?","Grid","Cloud","Cluster","Pervasive"],
-["In multicomputer systems, how does data travel?","Internal bus","LAN cable","Shared memory","Wireless"],
-["Omega switching network characteristic?","Single stage","Multiple stages","Direct only","No switching"],
-["Major problem with bus-based multiprocessors?","Security","Scalability","Power","Fault tolerance"],
-["Homogeneous multicomputer system?","Varied nodes","Identical nodes","Bus only","AMP only"],
-["Monolithic kernels differ because?","More modular","Better transparency","All services in kernel mode","Fewer resources"],
-["OS giving illusion of one centralized system?","Uniprocessor OS","Distributed OS","Network OS","Middleware"],
-["In SMP?","Master handles OS","Own memory","Share same OS instance","Asynchronous"],
-["Crossbar switch requires?","Linear connections","n² crosspoints","Single stage","No hardware"],
-["Grid computing is?","Homogeneous","Heterogeneous","Centralized","Single-threaded"],
-["Microkernel architecture?","All services in kernel","Most services in user space","Less modular","No multitasking"],
-["Distributed OS aims to?","Local services","Manage resources transparently","Limit access","Single CPU"],
-["Transparency means?","User awareness","Hiding complexity","Open source","Visual clarity"]
+["Packet switching divides data into:","Signals","Packets","Frames","Bits"],
+["Circuit switching establishes:","Temporary connection","Permanent path before transmission","Packet route","Logical address"],
+["Which is used in telephone networks?","Packet switching","Circuit switching","Frame relay","ATM"],
+["Which switching method is used in the Internet?","Circuit switching","Packet switching","Message switching","Line switching"],
+["Packet switching is:","Connection-oriented only","Connectionless or connection-oriented","Physical only","Manual"],
+["Circuit switching requires:","No setup","Setup phase","Packet header","Routing table"],
+["In packet switching, data is sent:","As a whole","In packets","In signals","In circuits"],
+["Circuit switching has:","Dynamic path","Dedicated path","No path","Random path"],
+["Packet switching improves:","Delay","Efficiency","Cost","Errors"],
+["Which has lower latency after setup?","Packet switching","Circuit switching","Both same","None"],
+["Packet switching uses:","Dedicated bandwidth","Shared bandwidth","No bandwidth","Fixed bandwidth"],
+["Circuit switching wastes:","Time","Bandwidth","Energy","Data"],
+["Each packet contains:","Only data","Header and data","Address only","Signal only"],
+["In packet switching, packets may:","Follow same path","Follow different paths","Not move","Stay fixed"],
+["Circuit switching has phases:","1","2","3","4"],
+["Packet switching does NOT require:","Setup","Routing","Header","Address"],
+["Delay in packet switching is:","Constant","Variable","Zero","Fixed"],
+["Circuit switching delay is:","Variable","Constant","Zero","Random"],
+["Packet switching is used in:","Telephone","Internet","Radio","Cable TV"],
+["Circuit switching example:","Email","VoIP","Telephone call","Web browsing"],
+["Packet switching allows:","Resource sharing","Dedicated path","Fixed delay","No routing"],
+["Circuit switching requires:","Routing per packet","No routing","Fixed routing","Dynamic routing"],
+["Packet switching is more:","Expensive","Efficient","Slow","Rigid"],
+["Circuit switching is:","Flexible","Rigid","Dynamic","Adaptive"],
+["Packet switching handles congestion by:","Ignoring","Dropping packets","Fixing circuit","Blocking users"],
+["Packet switching is:","Less reliable","More reliable (with protocols)","No error control","Fixed"],
+["Circuit switching bandwidth is:","Shared","Dedicated","Random","Dynamic"],
+["Packet switching bandwidth is:","Dedicated","Shared","Fixed","Reserved"],
+["Which is faster for continuous data?","Packet switching","Circuit switching","Both","None"],
+["Which is better for burst data?","Packet switching","Circuit switching","Both","None"],
+["Packet switching uses:","Store and forward","Direct transfer","Analog signals","Circuits"],
+["Circuit switching uses:","Store and forward","Dedicated path","Packet routing","Buffers"],
+["Packet switching reduces:","Flexibility","Efficiency","Cost","Speed"],
+["Circuit switching increases:","Efficiency","Delay","Cost","Sharing"],
+["Packet switching supports:","Multiple users","Single user","No user","Fixed user"],
+["Circuit switching supports:","Multiple paths","Single dedicated path","No path","Random path"],
+["Packet switching uses:","Headers","Circuits","Channels","Signals"],
+["Circuit switching requires:","Packet header","Setup phase","Buffer","Routing table"],
+["Packet switching delay depends on:","Traffic","Distance","Cable","Signal"],
+["Circuit switching is best for:","Data bursts","Voice calls","Emails","Web browsing"]
 ];
 
 const answers = [
-"Messages",
-"Distributed OS",
-"Cluster",
-"LAN cable",
-"Multiple stages",
-"Scalability",
-"Identical nodes",
-"All services in kernel mode",
-"Distributed OS",
-"Share same OS instance",
-"n² crosspoints",
-"Heterogeneous",
-"Most services in user space",
-"Manage resources transparently",
-"Hiding complexity"
+"Packets",
+"Permanent path before transmission",
+"Circuit switching",
+"Packet switching",
+"Connectionless or connection-oriented",
+"Setup phase",
+"In packets",
+"Dedicated path",
+"Efficiency",
+"Circuit switching",
+"Shared bandwidth",
+"Bandwidth",
+"Header and data",
+"Follow different paths",
+"3",
+"Setup",
+"Variable",
+"Constant",
+"Internet",
+"Telephone call",
+"Resource sharing",
+"No routing",
+"Efficient",
+"Rigid",
+"Dropping packets",
+"More reliable (with protocols)",
+"Dedicated",
+"Shared",
+"Circuit switching",
+"Packet switching",
+"Store and forward",
+"Dedicated path",
+"Cost",
+"Cost",
+"Multiple users",
+"Single dedicated path",
+"Headers",
+"Setup phase",
+"Traffic",
+"Voice calls"
 ];
-
+  
 // build questions
 window.onload=()=>{
 let form=document.getElementById("quiz");
