@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project X</title>
+
+
+<style>
+body {margin:0;font-family:Arial;color:white;overflow-x:hidden;}
+
+video.bg {position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;}
+.overlay {position:fixed;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:-1;}
+
+.container {max-width:900px;width:95%;margin:auto;padding:20px;}
+
+.question {background:rgba(0,0,0,0.5);padding:12px;margin-bottom:12px;border-radius:10px;}
+
+.correct {background:#16a34a !important;}
+.wrong {background:#dc2626 !important;}
+
+button {
+  padding:14px;
+  width:100%;
+  background:linear-gradient(135deg,#3b82f6,#9333ea);
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  margin-top:10px;
+  cursor:pointer;
+}
+button:hover {transform:scale(1.03);}
+
+.music-container {position:fixed;top:15px;right:15px;display:flex;align-items:center;}
+.music-btn {background:#111;padding:10px;border-radius:50%;cursor:pointer;}
+
+#volume {width:0;opacity:0;margin-left:10px;transition:0.3s;}
+.music-container:hover #volume {width:100px;opacity:1;}
+
+.popup {
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;justify-content:center;align-items:center;
+}
+.footer {text-align:center;padding:10px;font-size:16px;color:#0ff;text-shadow:0 0 5px #0ff,0 0 10px #0ff;}
+
+.popup-content {
+  position:relative;
+  background:#1e293b;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.close-btn {
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media(max-width:600px){
+h1{text-align:center;font-size:20px;}
+}
+
+
+label {
+  display:block;
+  background: rgba(255,255,255,0.05);
+  padding:10px;
+  border-radius:10px;
+  margin:6px 0;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+label:hover {
+  background: rgba(0,255,255,0.1);
+}
+
+
+input[type="radio"] {
+  display:none;
+}
+
+
+label span::before {
+  content:"";
+  display:inline-block;
+  width:16px;
+  height:16px;
+  border:2px solid #aaa;
+  border-radius:50%;
+  margin-right:10px;
+  vertical-align:middle;
+  transition:0.3s;
+}
+
+
+input[type="radio"]:checked + span {
+  color:#0ff;
+  font-weight:bold;
+}
+
+
+input[type="radio"]:checked + span::before {
+  background:#0ff;
+  border-color:#0ff;
+  box-shadow:0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+
+input[type="radio"]:checked + span {
+  text-shadow:0 0 5px #0ff;
+}
+</style>
+</head>
+
+<body>
+
+<video class="bg" autoplay muted loop playsinline>
+  <source src="https://c.top4top.io/m_3745v8l4o1.mp4">
+</video>
+<div class="overlay"></div>
+
+<div class="music-container">
+  <div class="music-btn">🔊</div>
+  <input type="range" id="volume" min="0" max="1" step="0.01" value="0.2">
+</div>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="">
+</audio>
+  <!-- https://j.top4top.io/m_3748lc2rv1.mp3 -->
+
+<div class="container">
+<h1>Embedded Systems</h1>
+<h2>Part 2 - 50 MCQs</h2>
+<form id="quiz"></form>
+
+<button onclick="submitQuiz()">Submit</button>
+<button onclick="restartQuiz()">Restart 🔄</button>
+<a href="index.html">
+  <button type="button">⬅ Part 1</button>
+</a>
+<div class="footer">⚡ Powered by xsaif</div>
+
+</div>
+
+<!-- popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">❌</span>
+    <h2 id="finalScore"></h2>
+    <button onclick="restartQuiz()">Retry 🔄</button>
+  </div>
+</div>
+
+<script>
+
+const questions = [
+  ["IN1 HIGH and IN2 LOW causes:","Stop","Forward rotation","Reverse rotation","Brake"],
+  ["IN1 LOW and IN2 HIGH causes:","Reverse rotation","Forward rotation","Stop","PWM"],
+  ["IN1 LOW and IN2 LOW causes:","Stop","Forward","Reverse","PWM"],
+  ["L298 output pins connect to:","Sensors","Motors","LEDs only","Buttons"],
+  ["Which supply powers the motor?","USB only","External motor supply","Serial monitor","Crystal oscillator"],
+  ["Which pin enables Motor A?","IN1","IN2","ENA","OUT1"],
+  ["Which pin enables Motor B?","ENB","IN3","IN4","OUT3"],
+  ["The L298 module commonly includes:","WiFi","Voltage regulator","LCD","GPS"],
+  ["DC motor direction depends on:","Color","Polarity","Resistance only","Frequency only"],
+  ["What type of signal controls motor speed?","Analog voltage only","PWM","UART","SPI"],
+
+  ["Which data type stores integers?","int","float","char","boolean"],
+  ["Which data type stores decimal numbers?","int","float","char","bool"],
+  ["Which operator means 'equal to'?","=","==","!=","+="],
+  ["Which command starts serial communication?","Serial.print()","Serial.begin()","digitalRead()","loop()"],
+  ["Which statement repeats while condition is true?","if","while","switch","case"],
+  ["Which symbol ends a statement in Arduino C?",".",";",":",","],
+  ["Which function reads analog values?","digitalRead()","analogRead()","digitalWrite()","analogWrite()"],
+  ["analogRead() range is:","0-255","0-1023","0-100","1-10"],
+  ["Which pin type supports PWM?","GND","Pins marked ~","RX only","TX only"],
+  ["Which library is included automatically?","Servo","Wire","Arduino core","LiquidCrystal"],
+
+  ["delay(1000) equals:","1 second","10 seconds","100 seconds","1 ms"],
+  ["Which command prints with new line?","Serial.print()","Serial.println()","Serial.write()","Serial.read()"],
+  ["Which keyword defines a constant?","int","const","char","loop"],
+  ["Which structure handles multiple conditions?","switch-case","loop","setup","begin"],
+  ["Which operator means NOT equal?","==","!=","<=", "+="],
+  ["Which component is needed between Arduino and DC motor?","Capacitor only","Motor driver","LED","Switch only"],
+  ["Why should motors not connect directly to Arduino?","High current draw","Wrong color","No coding","Low resistance"],
+  ["Which pin mode is used for LEDs?","INPUT","OUTPUT","INPUT_PULLUP","ANALOG"],
+  ["Active low means signal becomes:","HIGH when activated","LOW when activated","PWM when activated","Analog when activated"],
+  ["Active high means signal becomes:","LOW when activated","HIGH when activated","Floating","PWM"],
+
+  ["Which command changes motor speed?","digitalRead()","analogWrite()","pinMode()","setup()"],
+  ["PWM duty cycle affects:","Direction only","Speed","Color","Temperature only"],
+  ["Which pin is usually connected to motor enable?","PWM pin","Analog input","GND","RX"],
+  ["Which module can drive two motors simultaneously?","Relay module","L298","LCD module","RTC module"],
+  ["Which statement is correct for INPUT_PULLUP?","External resistor needed","Internal resistor used","PWM activated","Serial enabled"],
+  ["Which function initializes pins?","setup()","loop()","delay()","print()"],
+  ["Which command reads sensor/button state?","digitalRead()","digitalWrite()","analogWrite()","Serial.begin()"],
+  ["Which command sends HIGH/LOW signal?","digitalWrite()","analogRead()","Serial.read()","tone()"],
+  ["Which condition checks if button is pressed in active low?","buttonState == HIGH","buttonState == LOW","buttonState > 100","buttonState < 0"],
+  ["Which condition checks button in active high?","buttonState == HIGH","buttonState == LOW","analogRead(button)","delay(button)"],
+
+  ["The Arduino Uno has how many digital pins?","6","8","14","20"],
+  ["The Arduino Uno has how many analog pins?","4","6","8","10"],
+  ["Which communication is used by Serial Monitor?","UART","PWM","SPI only","I2C only"],
+  ["Which function can stop execution temporarily?","delay()","loop()","setup()","pinMode()"],
+  ["Which command defines pin number variable?","int led = 13;","HIGH = 13;","OUTPUT = 13;","setup = 13;"],
+  ["What is the purpose of GND?","Supply positive voltage","Common reference point","Increase PWM","Store data"],
+  ["Which logic level usually turns LED ON in active low circuit?","HIGH","LOW","PWM","Floating"],
+  ["Which logic level usually turns LED ON in active high circuit?","HIGH","LOW","Floating","Analog"],
+  ["Which device converts electrical energy to mechanical energy?","LED","Resistor","DC Motor","Capacitor"],
+  ["Which command is commonly used to control motor speed with L298?","analogWrite()","digitalRead()","Serial.begin()","pinMode()"]
+];
+
+const answers = [
+  "Forward rotation",
+  "Reverse rotation",
+  "Stop",
+  "Motors",
+  "External motor supply",
+  "ENA",
+  "ENB",
+  "Voltage regulator",
+  "Polarity",
+  "PWM",
+
+  "int",
+  "float",
+  "==",
+  "Serial.begin()",
+  "while",
+  ";",
+  "analogRead()",
+  "0-1023",
+  "Pins marked ~",
+  "Arduino core",
+
+  "1 second",
+  "Serial.println()",
+  "const",
+  "switch-case",
+  "!=",
+  "Motor driver",
+  "High current draw",
+  "OUTPUT",
+  "LOW when activated",
+  "HIGH when activated",
+
+  "analogWrite()",
+  "Speed",
+  "PWM pin",
+  "L298",
+  "Internal resistor used",
+  "setup()",
+  "digitalRead()",
+  "digitalWrite()",
+  "buttonState == LOW",
+  "buttonState == HIGH",
+
+  "14",
+  "6",
+  "UART",
+  "delay()",
+  "int led = 13;",
+  "Common reference point",
+  "LOW",
+  "HIGH",
+  "DC Motor",
+  "analogWrite()"
+];
+  
+// build questions
+window.onload=()=>{
+let form=document.getElementById("quiz");
+
+questions.forEach((q,i)=>{
+let div=document.createElement("div");
+div.className="question";
+div.id="q"+(i+1);
+
+let html=`<p>${i+1}. ${q[0]}</p>`;
+
+["A","B","C","D"].forEach((l,j)=>{
+html+=`
+<label>
+  <input type="radio" name="q${i+1}" value="${q[j+1]}">
+  <span>${l}) ${q[j+1]}</span>
+</label>
+`;
+});
+
+div.innerHTML=html;
+form.appendChild(div);
+});
+};
+
+// submit
+function submitQuiz(){
+let score=0;
+
+for(let i=1;i<=questions.length;i++){
+let selected=document.querySelector(`input[name="q${i}"]:checked`);
+let div=document.getElementById("q"+i);
+let correct=answers[i-1];
+
+let labels=div.querySelectorAll("label");
+
+labels.forEach(label => {
+  let input = label.querySelector("input");
+
+  if(input.value === correct){
+    label.innerHTML += " ✅";
+    label.style.color = "#22c55e";
+  }
+});
+
+if(selected && selected.value===correct){
+score++;
+div.classList.add("correct");
+}else{
+div.classList.add("wrong");
+}
+}
+
+document.getElementById("popup").style.display="flex";
+document.getElementById("finalScore").innerHTML=
+`🔥 Score: ${score} / ${questions.length}`;
+}
+
+// restart
+function restartQuiz(){
+location.reload();
+}
+
+// close popup
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
+let music = document.getElementById("bgMusic");
+let volume = document.getElementById("volume");
+
+music.volume = volume.value; 
+document.addEventListener("click",()=>{music.play().catch(()=>{});},{once:true});
+document.querySelector(".music-btn").onclick=()=>{music.paused?music.play():music.pause()};
+volume.oninput=()=>{music.volume=volume.value};
+</script>
+
+</body>
+</html>
