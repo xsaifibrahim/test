@@ -136,8 +136,8 @@ input[type="radio"]:checked + span {
 
 
 <div class="container">
-<h1>Software Engineering</h1>
-<h2>True OR False Sheet 1,2,3</h2>
+<h1>Embedded Systems</h1>
+<h2>True OR False</h2>
 <form id="quiz"></form>
 
 <button onclick="submitQuiz()">Submit</button>
@@ -161,73 +161,117 @@ input[type="radio"]:checked + span {
 <script>
 
 const questions = [
-["Software is a product and can be manufactured using the same technologies used for other engineering artifacts.","True","False","0","0"],
-["WebApps are a mixture of print publishing and software development, making their development outside the realm of software engineering practice.","True","False","0","0"],
-["There are no real differences between creating WebApps and MobileApps.","True","False","0","0"],
-["In its simplest form an external computing device may access cloud data services using a web browser.","True","False","0","0"],
-["Product line software development depends the reuse of existing software components to provide software engineering leverage.","True","False","0","0"],
-["Software engineering umbrella activities are only applied during the initial phases of software development projects.","True","False","0","0"],
-["Planning ahead for software reuse reduces the cost and increases the value of the systems into which they are incorporated.","True","False","0","0"],
-["The essence of software engineering practice might be described as understand the problem, plan a solution, carry out the plan, and examine the result for accuracy.","True","False","0","0"],
-["In agile process models the only deliverable work product is the working program.","True","False","0","0"],
-["Most software development projects are initiated to try to meet some business need.","True","False","0","0"],
+  ["Arduino Uno uses ATmega328P microcontroller.","True","False"],
+  ["setup() runs repeatedly.","True","False"],
+  ["loop() runs continuously.","True","False"],
+  ["digitalWrite() reads a pin value.","True","False"],
+  ["digitalRead() reads HIGH or LOW.","True","False"],
+  ["HIGH usually means 5V.","True","False"],
+  ["LOW usually means 0V.","True","False"],
+  ["INPUT_PULLUP enables internal pull-up resistor.","True","False"],
+  ["Active low button gives LOW when pressed.","True","False"],
+  ["Active high button gives HIGH when pressed.","True","False"],
 
-["Company has latest computers and state-of-the-art software tools, so we shouldn’t worry about the quality of the product.","True","False","0","0"],
-["Software is a product and can be manufactured using the same technologies used for other engineering artifacts.","True","False","0","0"],
-["There are no real differences between creating Web Apps and Mobile-apps.","True","False","0","0"],
-["WebApps are a mixture of print publishing and software development, making their development outside the realm of software engineering practice.","True","False","0","0"],
-["Product line software development depends the reuse of existing software components to provide software engineering leverage.","True","False","0","0"],
-["In its simplest form an external computing device may access cloud data services using a web browser.","True","False","0","0"],
-["There are software engineering fundamentals that apply to all software systems.","True","False","0","0"],
-["Different processes are used for same types of software.","True","False","0","0"],
-["The system should perform efficiently and should not waste resources.","True","False","0","0"],
-["The development of the World Wide Web has had a profound effect on all of our lives.","True","False","0","0"],
+  ["PWM can control motor speed.","True","False"],
+  ["analogWrite() generates PWM signal.","True","False"],
+  ["PWM range is 0 to 255.","True","False"],
+  ["L298 is a motor driver module.","True","False"],
+  ["L298 can control two DC motors.","True","False"],
+  ["Motors should connect directly to Arduino pins.","True","False"],
+  ["delay(1000) means 1 second.","True","False"],
+  ["pinMode() sets pin as input or output.","True","False"],
+  ["OUTPUT mode is used for LEDs.","True","False"],
+  ["INPUT mode is used for buttons.","True","False"],
 
-["Activity diagrams are used to model the processing of data.","True","False","0","0"],
-["WebApps are a mixture of print publishing and software development, making their development outside the realm of software engineering practice.","True","False","0","0"],
-["Product line software development depends the reuse of existing software components to provide software engineering leverage.","True","False","0","0"],
-["There are no real differences between creating WebApps and Mobile-Apps.","True","False","0","0"],
-["In its simplest form an external computing device may access cloud data services using a web browser.","True","False","0","0"],
-["Model-driven engineering is just a theoretical concept. It cannot be converted into a working/executable code.","True","False","0","0"],
-["Software processes can be constructed out of pre-existing software patterns to best meet the needs of a software project.","True","False","0","0"],
-["A good software development team always uses the same task set for every project to insure high quality work products.","True","False","0","0"],
-["Planning for software reuse reduces the cost and increases the value of the systems into which they are incorporated.","True","False","0","0"],
-["Software engineering umbrella activities are only applied during the initial phases of software development projects.","True","False","0","0"]
+  ["Floating pins can give unstable readings.","True","False"],
+  ["Pull-up resistors keep input HIGH by default.","True","False"],
+  ["Pull-down resistors keep input LOW by default.","True","False"],
+  ["analogRead() range is 0-1023.","True","False"],
+  ["Arduino Uno has 14 digital pins.","True","False"],
+  ["Arduino Uno has 6 analog pins.","True","False"],
+  ["Serial.begin() starts serial communication.","True","False"],
+  ["Serial.println() adds a new line.","True","False"],
+  ["ENA pin controls motor speed.","True","False"],
+  ["IN1 and IN2 control motor direction.","True","False"],
+
+  ["digitalWrite(pin, HIGH) outputs HIGH signal.","True","False"],
+  ["digitalWrite(pin, LOW) outputs LOW signal.","True","False"],
+  ["Active low circuits are commonly used with INPUT_PULLUP.","True","False"],
+  ["Buttons never need resistors.","True","False"],
+  ["L298 can reverse motor direction.","True","False"],
+  ["PWM pins are marked with ~ on Arduino Uno.","True","False"],
+  ["setup() is optional in Arduino programs.","True","False"],
+  ["Semicolon ends statements in Arduino C.","True","False"],
+  ["if statement is used for decisions.","True","False"],
+  ["for loop repeats instructions multiple times.","True","False"],
+
+  ["DC motors convert electrical energy to motion.","True","False"],
+  ["GND stands for ground.","True","False"],
+  ["analogWrite() can be used on every pin.","True","False"],
+  ["Active high means signal becomes HIGH when activated.","True","False"],
+  ["Active low means signal becomes LOW when activated.","True","False"],
+  ["L298 protects Arduino from high motor current.","True","False"],
+  ["A button can be read using digitalRead().","True","False"],
+  ["PWM changes average voltage delivered to motor.","True","False"],
+  ["digital pins can only output signals.","True","False"],
+  ["Arduino IDE is used to write and upload code.","True","False"]
 ];
 
 const answers = [
-  "False",
-  "False",
-  "False",
-  "True",
   "True",
   "False",
   "True",
-  "True",
-  "False",
-  "True",
-
-  "False",
-  "False",
-  "False",
   "False",
   "True",
   "True",
   "True",
-  "False",
+  "True",
   "True",
   "True",
 
   "True",
-  "False",
+  "True",
+  "True",
+  "True",
   "True",
   "False",
   "True",
-  "False",
+  "True",
+  "True",
+  "True",
+
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+
+  "True",
+  "True",
   "True",
   "False",
   "True",
-  "False"
+  "True",
+  "False",
+  "True",
+  "True",
+  "True",
+
+  "True",
+  "True",
+  "False",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "False",
+  "True"
 ];
 
 // build questions
